@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "title": "Life expectancy over time",
+    "width": "container",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ysloku/FIT3179/main/life-expectancy_data1.csv"
+    },
+    "mark": {"type": "line", "point": true},
+    "transform": [
+      {
+        "filter": "datum.Country=='Australia'|datum.Country=='United States'|datum.Country=='China'|datum.Country=='Hong Kong'"
+      }
+    ],
+    "encoding": {
+      "x": {
+        "timeUnit": "year",
+        "field": "Year",
+        "axis": {"grid": false, "tickCount": 6}
+      },
+      "y": {
+        "field": "Life expectancy",
+        "type": "quantitative",
+        "title": "Life expectancy",
+        "axis": {"grid": false, "tickCount": 5}
+      },
+      "color": {"field": "Country", "type": "nominal"},
+      "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {
+          "field": "Life expectancy",
+          "type": "quantitative",
+          "title": "Life expectancy",
+          "format": ".2f"
+        },
+        {"field": "Year", "type": "temporal", "timeUnit": "year"}
+      ]
+    },
+    "config": {}
+  }
