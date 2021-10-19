@@ -1,0 +1,43 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "title": "Human Development Index of countries, 2017 ",
+    "width": "container",
+    "data": {
+      "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
+    "layer": [
+      {
+        "transform": [
+          {
+            "lookup": "properties.NAME",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/ysloku/FIT3179/main/NEWworld_HDI.csv"
+              },
+              "key": "Country",
+              "fields": ["Human Development Index (UNDP)"]
+            }
+          }
+        ],
+        "projection": {"type": "equirectangular"},
+        "mark": {"type": "geoshape"},
+        "encoding": {
+          "color": {
+            "field": "Human Development Index (UNDP)",
+            "type": "quantitative",
+            "title": "Human Development Index (UNDP) ($)"
+          },
+          "tooltip": [
+            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+            {
+              "field": "Human Development Index (UNDP)",
+              "type": "quantitative",
+              "title": "Human Development Index (UNDP) ($)"
+            }
+          ]
+        }
+      }
+    ],
+    "config": {}
+  }
