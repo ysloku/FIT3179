@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
      "width": 450,
       "height": 600,
-      "background":"antiquewhite",
+      "background":"white",
     "data": {
       "url": "https://raw.githubusercontent.com/ysloku/FIT3179/main/tot_education.csv"
     },
