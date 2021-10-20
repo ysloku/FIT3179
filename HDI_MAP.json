@@ -26,14 +26,14 @@
         "color": {
           "field": "Human Development Index (UNDP)",
           "type": "quantitative",
-          "title": "Human Development Index (UNDP) ($)"
+          "title": "Human Development Index($)"
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
           {
             "field": "Human Development Index (UNDP)",
             "type": "quantitative",
-            "title": "Human Development Index (UNDP) ($)"
+            "title": "Human Development Index($)"
           }
         ]
       }
