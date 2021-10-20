@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "title": "Gross National Income per Capita",
+    "width": "container",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ysloku/FIT3179/main/gross-national-income-per-capita.csv"
+    },
+    "mark": {"type": "line", "point": true},
+    "transform": [
+      {
+        "filter": "datum.Country=='China'|datum.Country=='United States'|datum.Country=='Australia'|datum.Country=='South Korea'|datum.Country=='Norway'"
+      }
+    ],
+    "encoding": {
+      "x": {
+        "timeUnit": "year",
+        "field": "Year",
+        "axis": {"grid": false, "tickCount": 6}
+      },
+      "y": {
+        "field": "GNI per capita, PPP (constant 2017 international $)",
+        "type": "quantitative",
+        "title": "GNI per capita($)",
+        "axis": {"grid": false, "tickCount": 5}
+      },
+      "color": {"field": "Country", "type": "nominal"},
+      "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {
+          "field": "GNI per capita, PPP (constant 2017 international $)",
+          "type": "quantitative",
+          "title": "GNI per capita($)",
+          "format": ".2f"
+        },
+        {"field": "Year", "type": "temporal", "timeUnit": "year"}
+      ]
+    },
+    "config": {}
+  }
