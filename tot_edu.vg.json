@@ -1,0 +1,101 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+     "width": 450,
+      "height": 600,
+      "background":"antiquewhite",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ysloku/FIT3179/main/tot_education.csv"
+    },
+    "params": [
+      {
+        "name": "Country_selection",
+  "bind": {
+    "input": "select",
+    "options": [
+      null,
+      "Bangladesh",
+      "Canada",
+      "China",
+      "Hong Kong",
+      "India",
+      "Indonesia",
+      "Japan",
+      "Korea, Republic of (South)",
+      "Malaysia",
+      "Nepal",
+      "United States of America"
+  ],
+  "labels":[
+  "Show All",
+  "Bangladesh",
+      "Canada",
+      "China",
+      "Hong Kong",
+      "India",
+      "Indonesia",
+      "Japan",
+      "Korea, Republic of (South)",
+      "Malaysia",
+      "Nepal",
+      "United States of America"
+  ],
+  "name": "Country Selection: "
+  } }
+    ],
+    "transform": [
+  {"filter": "Country_selection == null || datum.Country1 == Country_selection"}
+  ],
+  "selection": {
+          "Country_highlight": {
+            "type": "multi",
+            "fields": ["Country1"],
+            "bind": "legend"
+  } 
+  },
+    "mark": {"type":"area",
+    "line":true,
+    "point":true
+    },
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal"
+      },
+      "y": {
+        "field":"Total years of schooling in the long run",
+        "type":"quantitative",
+        "aggregate":"sum"
+      },
+      "color": {
+        "type":"nominal",
+        "field": "Country1",
+        "scale": {
+          "domain": [
+            "Bangladesh",
+              "Canada",
+              "China",
+              "Hong Kong",
+              "India",
+              "Indonesia",
+              "Japan",
+              "Korea, Republic of (South)",
+              "Malaysia",
+              "Nepal",
+              "United States of America"
+          ],
+          "range": ["#1E90FF","#9370DB","#DC143C","#FF69B4","#FF8C00","#9ACD32","#CD853F","#FFD700","#808080","#008080","#CD7F32","#FFD580","#E37383","#93C572","#7C3030","#F2D2BD","#CCCCFF"]
+        },
+        "title": "Country"        
+      },
+      "opacity": {
+        "condition": {"selection": "Country_highlight", "value": 1.0},
+        "value": 0.2
+  },
+  "tooltip": [
+  {"field": "Country1", "type": "nominal"},
+  {"field": "Total years of schooling in the long run", "type": "quantitative", "format": ","},
+  {"field": "Year", "type": "nominal"}
+  ]
+    },
+    "config": {}
+  }
